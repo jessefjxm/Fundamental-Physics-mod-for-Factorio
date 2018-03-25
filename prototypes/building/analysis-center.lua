@@ -44,13 +44,13 @@ data:extend(
 	},
 })
 
-for i=1,4 do
+for i=1,3 do
 	local lab_item = {
 		type = "item",
 		name = "particle-physics-analysis-center-mk"..i,
 		icons = {
 			{
-				icon = "__fundamental_physics__/graphics/item/facility.png",
+				icon = "__fundamental_physics__/graphics/item/analysis-center.png",
 			}
 		},
 		icon_size = 32,
@@ -66,20 +66,21 @@ for i=1,4 do
 	lab.name = "particle-physics-analysis-center-mk"..i
 	lab.fast_replaceable_group = "particle-physics-analysis-center"
 	lab.module_specification.module_slots = i
+	lab.allowed_effects = {"consumption", "speed", "pollution"}
 	lab.icons = {
 			{
-				icon = "__fundamental_physics__/graphics/item/facility.png",
+				icon = "__fundamental_physics__/graphics/item/analysis-center.png",
 			}
 		}
 	mylib.add_angel_num_icon(lab,i)
 	lab.crafting_categories = {"fundamental-physics-spectral-analysis", "fundamental-physics-standard-model"}
-    lab.result_inventory_size = 7
+    lab.result_inventory_size = 6
 	lab.minable.result = "particle-physics-analysis-center-mk"..i
 	lab.max_health = 2*data.raw.lab["lab"].max_health
 	lab.crafting_speed = i
 	lab.animation =
 		{
-			filename = "__fundamental_physics__/graphics/entity/facility.png",
+			filename = "__fundamental_physics__/graphics/entity/analysis-center.png",
 			priority = "high",
 			width = 128,
 			height = 128,

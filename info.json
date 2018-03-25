@@ -1,6 +1,6 @@
 {
 "name":"fundamental_physics",
-"version":"0.1.0",
+"version":"0.2.0",
 "title":"Fundamental Physics",
 "author":"Jessefjxm",
 "description":"Adds fundamental physical research that add lab productivity bonus.",
@@ -10,5 +10,6 @@
 	"?aai-industry >= 0.2.0",
 	"?bobplates >= 0.16",
 	"?bobwarfare >= 0.16",
+	"?bobores >= 0.16",
 	"?angelspetrochem >= 0.7"]
 }

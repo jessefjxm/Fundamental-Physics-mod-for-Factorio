@@ -50,14 +50,24 @@ data:extend(
 	group = "fundamental-physics",
 	order = "e",
   },
-}
-)
+})
+
 if not data.raw["recipe-category"]["particle-accelerator"] then
 data:extend(
 {
   {
     type = "recipe-category",
     name = "particle-accelerator",
+  },
+  
+ })
+end
+if not data.raw["recipe-category"]["facility"] then
+data:extend(
+{
+  {
+    type = "recipe-category",
+    name = "facility",
   },
   
  })

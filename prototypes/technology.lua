@@ -1,23 +1,4 @@
-function add_prerequisite(technology, prerequisite)
-  if data.raw.technology[technology] and data.raw.technology[prerequisite] then
-    local addit = true
-    if data.raw.technology[technology].prerequisites then
-      for i, check in ipairs(data.raw.technology[technology].prerequisites) do
-        if check == prerequisite then addit = false end
-      end
-    else
-      data.raw.technology[technology].prerequisites = {}
-    end
-    if addit then table.insert(data.raw.technology[technology].prerequisites, prerequisite) end
-  else
-    if not data.raw.technology[technology] then
-      log("Technology " .. technology .. " does not exist.")
-    end
-    if not data.raw.technology[prerequisite] then
-      log("Technology " .. prerequisite .. " does not exist.")
-    end
-  end
-end
+-- classical-physics
 
 data:extend({
   {
@@ -40,19 +21,27 @@ data:extend({
   },
 })
 if data.raw.technology["basic-automation"] then
-  add_prerequisite("basic-automation", "classical-physics")
+  mylib.add_prerequisite("basic-automation", "classical-physics")
 else
-  add_prerequisite("automation", "classical-physics")
+  mylib.add_prerequisite("automation", "classical-physics")
 end
 if data.raw.technology["basic-logistics"] then
-	add_prerequisite("basic-logistics", "classical-physics")
+	mylib.add_prerequisite("basic-logistics", "classical-physics")
 else
-	add_prerequisite("logistics", "classical-physics")
+	mylib.add_prerequisite("logistics", "classical-physics")
 end
 if data.raw.recipe["facility-science-pack-1"] then
-	add_prerequisite("facility-1", "classical-physics")
+	mylib.add_prerequisite("facility-1", "classical-physics")
 end
-add_prerequisite("optics", "classical-physics")
+mylib.add_prerequisite("optics", "classical-physics")
+for i=1,3 do
+	table.insert(data.raw.technology["classical-physics"].effects,{
+       type = "unlock-recipe",
+        recipe = "research-report-integration-"..i
+    })
+end
+
+-- spectral-analysis
 
 data:extend({
   {
@@ -70,6 +59,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "particle-physics-analysis-center-mk1"
       },
+	  {
+       type = "unlock-recipe",
+        recipe = "research-report-integration-4"
+		}
     },
     unit =
     {
@@ -105,7 +98,9 @@ data:extend({
       {
         {"research-report-1", 3},
         {"research-report-2", 2},
-        {"research-report-3", 1},
+        {"research-report-3", 2},
+        {"research-report-4", 1},
+        {"research-report-5", 1},
       },
       time = 45
     },
@@ -115,14 +110,24 @@ data:extend({
     order = "e-l-g"
   },
 })
-if data.raw.recipe["facility-science-pack-1"] then
-	add_prerequisite("spectral-analysis-1", "facility-1")
+if data.raw.technology["facility-1"] then
+	mylib.add_prerequisite("spectral-analysis-1", "facility-1")
 else
---	table.insert(data.raw.technology["spectral-analysis-1"].effects,{
---       type = "unlock-recipe",
---        recipe = "facility-1"
---      })
+	table.insert(data.raw.technology["spectral-analysis-1"].effects,{
+       type = "unlock-recipe",
+        recipe = "facility-1"
+      })
 end
+for k,v in pairs(data.raw.recipe) do
+	if string.sub(v.name, 1,17)=="spectral-analysis" then
+	table.insert(data.raw.technology["spectral-analysis-1"].effects,{
+       type = "unlock-recipe",
+        recipe = v.name
+    })
+	end
+end
+
+-- standard-model
 
 data:extend({
   {
@@ -152,6 +157,10 @@ data:extend({
         type = "unlock-recipe",
         recipe = "particle-collision-100mev"
       },
+	  {
+       type = "unlock-recipe",
+        recipe = "research-report-integration-5"
+	}
     },
     unit =
     {
@@ -209,11 +218,11 @@ data:extend({
       count_formula = "2000*L^(1.2)",
       ingredients =
       {
-        {"research-report-1", 6},
-        {"research-report-2", 5},
-        {"research-report-3", 4},
-        {"research-report-4", 3},
-        {"research-report-5", 2},
+        {"research-report-1", 3},
+        {"research-report-2", 3},
+        {"research-report-3", 2},
+        {"research-report-4", 2},
+        {"research-report-5", 1},
         {"research-report-6", 1},
       },
       time = 60
@@ -240,11 +249,11 @@ data:extend({
       count_formula = "2000*L^(1.2)",
       ingredients =
       {
-        {"research-report-1", 6},
-        {"research-report-2", 5},
-        {"research-report-3", 4},
-        {"research-report-4", 3},
-        {"research-report-5", 2},
+        {"research-report-1", 3},
+        {"research-report-2", 3},
+        {"research-report-3", 2},
+        {"research-report-4", 2},
+        {"research-report-5", 1},
         {"research-report-6", 1},
       },
       time = 60
@@ -255,14 +264,18 @@ data:extend({
     order = "e-l-g"
   },
 })
-if data.raw.recipe["facility-science-pack-1"] then
-	add_prerequisite("standard-model-1", "facility-2")
-	add_prerequisite("standard-model-1", "particle-accelerator-2")
+if data.raw.technology["facility-1"] then
+	mylib.add_prerequisite("standard-model-1", "facility-2")
+	mylib.add_prerequisite("standard-model-1", "particle-accelerator-2")
 else
---	table.insert(data.raw.technology["standard-model-1"].effects,{
---        type = "unlock-recipe",
---        recipe = "facility-2"
---      })
+	table.insert(data.raw.technology["standard-model-1"].effects,{
+        type = "unlock-recipe",
+        recipe = "facility-2"
+      })
+	table.insert(data.raw.technology["standard-model-2"].effects,{
+        type = "unlock-recipe",
+        recipe = "facility-3"
+      })
 	table.insert(data.raw.technology["standard-model-1"].effects,{
         type = "unlock-recipe",
         recipe = "particle-accelerator-mk1"
@@ -272,6 +285,8 @@ else
         recipe = "particle-accelerator-mk2"
       })
 end
+
+-- deep-space-accelerator
 
 data:extend({
   {
@@ -292,7 +307,10 @@ data:extend({
       },	  {
         type = "unlock-recipe",
         recipe = "particle-accelerator-mk4"
-      }
+      },{
+       type = "unlock-recipe",
+        recipe = "research-report-integration-6"
+		}
     },
     unit =
     {
@@ -314,6 +332,8 @@ data:extend({
   },
 })
 
+-- superstring-theory
+
 data:extend({
   {
     type = "technology",
@@ -332,11 +352,11 @@ data:extend({
       count_formula = "3000*L^(1.2)",
       ingredients =
       {
-        {"research-report-1", 7},
-        {"research-report-2", 6},
-        {"research-report-3", 5},
-        {"research-report-4", 4},
-        {"research-report-5", 3},
+        {"research-report-1", 4},
+        {"research-report-2", 4},
+        {"research-report-3", 3},
+        {"research-report-4", 3},
+        {"research-report-5", 2},
         {"research-report-6", 2},
         {"research-report-7", 1},
       },
@@ -348,4 +368,4 @@ data:extend({
     order = "e-l-g"
   },
 })
-add_prerequisite("superstring-theory", "facility-3")
+mylib.add_prerequisite("superstring-theory", "facility-3")

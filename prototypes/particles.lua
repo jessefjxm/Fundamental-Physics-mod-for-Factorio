@@ -13,6 +13,7 @@ data:extend({
 			},
 		},
 		icon_size = 32,
+		order = string.char(96+k),
 		flags = {"goes-to-quickbar"},
 		subgroup = "fundamental-physics-standard-model",
 		stack_size = 100,
@@ -219,21 +220,8 @@ mylib.add_angel_num_icon(data.raw.recipe["particle-collision-10gev"],4)
 mylib.add_angel_num_icon(data.raw.recipe["particle-collision-100gev"],5)
 mylib.add_angel_num_icon(data.raw.recipe["particle-collision-250gev"],6)
 
-function cal_amount_func(min, max)
-	local amount_func = {}
-	for i=min,max do
-		amount_func[#amount_func+1] = i
-	end
-	for i=max,min,-1 do
-		amount_func[#amount_func+1] = i
-	end
-	return amount_func
-end
-local amount_func = cal_amount_func(1,16)
-function cal_amount(k, k_list, ratio, diff)
-	return amount_func[math.floor(k/#k_list*ratio*#amount_func+diff)]
-end
-
+-- generate collision case -> report recipes
+local amount_func = mylib.cal_amount_func(1,10)
 for k,v in pairs(list) do
 data:extend({
 	{
@@ -254,20 +242,16 @@ data:extend({
 		},
 		ingredients = 
 		{
-			{v, 100}
+			{v, 50}
 		},
 		results = {
-        {"research-report-1", cal_amount(k, list, 0.5, 16)},
-        {"research-report-2", cal_amount(k, list, 0.5, 11)},
-        {"research-report-3", cal_amount(k, list, 0.5, 7)},
-        {"research-report-4", cal_amount(k, list, 0.5, 3)},
-        {"research-report-5", cal_amount(k, list, 0.5, 2)},
-        {"research-report-6", cal_amount(k, list, 0.5, 1)},
+        {"research-report-2", mylib.cal_amount(k, #list, amount_func, 0.5, 0.5)},
+        {"research-report-3", mylib.cal_amount(k, #list, amount_func, 0.5, 0.3)},
+        {"research-report-4", mylib.cal_amount(k, #list, amount_func, 0.5, 0.2)},
+        {"research-report-5", mylib.cal_amount(k, #list, amount_func, 0.5, 0.1)},
+        {"research-report-6", mylib.cal_amount(k, #list, amount_func, 0.5, 0)},
       },
 	}
 })
---log("standard-model-"..v)
---for k,v in pairs(data.raw.recipe["standard-model-"..v].results) do
---	log(v[1]..", "..v[2])
---end
+mylib.add_productivity_limitation("standard-model-"..v)
 end
