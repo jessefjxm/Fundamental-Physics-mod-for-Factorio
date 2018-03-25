@@ -39,6 +39,10 @@ for i=1,3 do
        type = "unlock-recipe",
         recipe = "research-report-integration-"..i
     })
+	table.insert(data.raw.technology["classical-physics"].effects,{
+       type = "unlock-recipe",
+        recipe = "research-report-secondary-analysis-"..i
+    })
 end
 
 -- spectral-analysis
@@ -62,7 +66,10 @@ data:extend({
 	  {
        type = "unlock-recipe",
         recipe = "research-report-integration-4"
-		}
+		},{
+       type = "unlock-recipe",
+        recipe = "research-report-secondary-analysis-4"
+    }
     },
     unit =
     {
@@ -160,7 +167,10 @@ data:extend({
 	  {
        type = "unlock-recipe",
         recipe = "research-report-integration-5"
-	}
+	},{
+       type = "unlock-recipe",
+        recipe = "research-report-secondary-analysis-5"
+    }
     },
     unit =
     {
@@ -310,7 +320,10 @@ data:extend({
       },{
        type = "unlock-recipe",
         recipe = "research-report-integration-6"
-		}
+		},{
+       type = "unlock-recipe",
+        recipe = "research-report-secondary-analysis-6"
+    }
     },
     unit =
     {

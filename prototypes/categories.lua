@@ -46,6 +46,12 @@ data:extend(
   },
   {
     type = "item-subgroup",
+    name = "fundamental-physics-research-report-2",
+	group = "fundamental-physics",
+	order = "d-e",
+  },
+  {
+    type = "item-subgroup",
     name = "fundamental-physics-lab",
 	group = "fundamental-physics",
 	order = "e",

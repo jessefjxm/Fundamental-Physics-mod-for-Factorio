@@ -1,6 +1,7 @@
 require("functions")
 
 require("prototypes.categories")
+require("prototypes.styles")
 
 require("prototypes.research-reports")
 require("prototypes.particles")
