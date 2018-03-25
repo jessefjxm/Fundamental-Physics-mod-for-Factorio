@@ -8,7 +8,6 @@ local dsa_recipe =
 		order = "z",
 		ingredients =
 		{
-			{"advanced-processing-unit", 100},
 			{"low-density-structure", 100},
 			{"particle-accelerator-mk2", 5}
 		},
@@ -24,6 +23,12 @@ if data.raw.item["radar-5"] then
 else
 	table.insert(dsa_recipe.ingredients, {"radar", 5})
 end
+if data.raw.item["advanced-processing-unit"] then
+	table.insert(dsa_recipe.ingredients, {"advanced-processing-unit", 100})
+else
+	table.insert(dsa_recipe.ingredients, {"processing-unit", 100})
+end
+
 data:extend({dsa_recipe})
 
 data:extend({

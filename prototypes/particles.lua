@@ -60,7 +60,7 @@ data:extend({
 		name = "particle-collision-100mev",
 		category = "particle-accelerator",
 		enabled = false,
-		energy_required = 20,
+		energy_required = 15,
 		subgroup = "fundamental-physics-standard-model",
 		order = "b",
 		icons = {
@@ -92,7 +92,7 @@ data:extend({
 		name = "particle-collision-1gev",
 		category = "particle-accelerator-gev",
 		enabled = false,
-		energy_required = 40,
+		energy_required = 20,
 		subgroup = "fundamental-physics-standard-model",
 		order = "c",
 		icons = {
@@ -124,7 +124,7 @@ data:extend({
 		name = "particle-collision-10gev",
 		category = "particle-accelerator-gev",
 		enabled = false,
-		energy_required = 60,
+		energy_required = 25,
 		subgroup = "fundamental-physics-standard-model",
 		order = "d",
 		icons = {
@@ -155,7 +155,7 @@ data:extend({
 		name = "particle-collision-100gev",
 		category = "particle-accelerator-gev",
 		enabled = false,
-		energy_required = 80,
+		energy_required = 30,
 		subgroup = "fundamental-physics-standard-model",
 		order = "e",
 		icons = {
@@ -187,7 +187,7 @@ data:extend({
 		name = "particle-collision-250gev",
 		category = "particle-accelerator-gev",
 		enabled = false,
-		energy_required = 120,
+		energy_required = 40,
 		subgroup = "fundamental-physics-standard-model",
 		order = "f",
 		icons = {

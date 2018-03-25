@@ -1,17 +1,15 @@
 local ing = {
   {
-    {"basic-circuit-board", 20},
     {"pipe", 20},
     {"stone-brick", 100}
   },
   {
     {"facility-mk1", 1},
-    {"advanced-circuit", 20},
+    {"advanced-circuit", 30},
     {"concrete", 100}
   },
   {
     {"facility-mk2", 1},
-    {"advanced-processing-unit", 20},
     {"refined-concrete", 100}
   },
 }
@@ -21,6 +19,16 @@ if bobmods and bobmods.plates then
 else
   table.insert(ing[2], {"pipe", 100})
   table.insert(ing[3], {"pipe", 100})
+end
+if data.raw.item["basic-circuit-board"] then
+	table.insert(ing[1], {"basic-circuit-board", 20})
+else
+	table.insert(ing[1], {"electronic-circuit", 20})
+end
+if data.raw.item["advanced-processing-unit"] then
+	table.insert(ing[3], {"advanced-processing-unit", 40})
+else
+	table.insert(ing[3], {"processing-unit", 40})
 end
 
 for i=1,3 do
@@ -45,7 +53,7 @@ for i=1,3 do
       },
       icon_size = 32,
       flags = {"goes-to-quickbar"},
-	  subgroup = "fundamental-physics-spectral-analysis",
+	  subgroup = "fundamental-physics-lab",
       order = "a-a",
       place_result = "facility-mk"..i,
       stack_size = 10,

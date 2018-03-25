@@ -8,7 +8,6 @@ data:extend(
 		energy_required = 10,
 		ingredients =
 		{
-			{"basic-circuit-board", 20},
 			{"stone-brick", 100}
 		},
 		icons = {
@@ -16,6 +15,7 @@ data:extend(
 				icon = "__fundamental_physics__/graphics/item/lab-1.png",
 			}
 		},
+		icon_size = 32,
 		result = "fundamental-physics-research-center-mk1"
 	},
 	
@@ -27,7 +27,7 @@ data:extend(
 		ingredients =
 		{
 			{"fundamental-physics-research-center-mk1", 1},
-			{"advanced-circuit", 20},
+			{"advanced-circuit", 30},
 			{"iron-plate", 100},
 			{"concrete", 100}
 		},
@@ -36,6 +36,7 @@ data:extend(
 				icon = "__fundamental_physics__/graphics/item/lab-2.png",
 			}
 		},
+		icon_size = 32,
 		result = "fundamental-physics-research-center-mk2"
 	},
 	
@@ -47,7 +48,6 @@ data:extend(
 		ingredients =
 		{
 			{"fundamental-physics-research-center-mk2", 1},
-			{"advanced-processing-unit", 20},
 			{"steel-plate", 100},
 			{"refined-concrete", 100}
 		},
@@ -56,9 +56,21 @@ data:extend(
 				icon = "__fundamental_physics__/graphics/item/lab-3.png",
 			}
 		},
+		icon_size = 32,
 		result = "fundamental-physics-research-center-mk3"
 	},
 })
+if data.raw.item["basic-circuit-board"] then
+	table.insert(data.raw.recipe["fundamental-physics-research-center-mk1"].ingredients, {"basic-circuit-board", 20})
+else
+	table.insert(data.raw.recipe["fundamental-physics-research-center-mk1"].ingredients, {"electronic-circuit", 20})
+end
+if data.raw.item["advanced-processing-unit"] then
+	table.insert(data.raw.recipe["fundamental-physics-research-center-mk3"].ingredients, {"advanced-processing-unit", 40})
+else
+	table.insert(data.raw.recipe["fundamental-physics-research-center-mk3"].ingredients, {"processing-unit", 40})
+end
+
 
 -- item & entity
 for i=1,3 do

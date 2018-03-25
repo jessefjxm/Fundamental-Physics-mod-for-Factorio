@@ -42,6 +42,7 @@ for i=1,6 do
 					shift = {-6, 16}
 				},
 			},
+			icon_size = 32,
 			order = "a",
 			result = "research-report-"..(i+1)
 		}

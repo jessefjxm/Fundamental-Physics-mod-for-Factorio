@@ -8,17 +8,14 @@ local pa_ing = {
 },
 {
 	{"particle-accelerator-mk1", 1},
-	{"advanced-processing-unit", 100},
 	{"stone-brick", 100}
 },
 {
 	{"particle-accelerator-mk2", 1},
-	{"advanced-processing-unit", 200},
 	{"concrete", 100}
 },
 {
 	{"particle-accelerator-mk3", 1},
-	{"advanced-processing-unit", 400},
 	{"refined-concrete", 100}
 },
 }
@@ -40,6 +37,15 @@ else
 	table.insert(pa_ing[3], {"pipe", 100})
 	table.insert(pa_ing[4], {"steel-plate", 100})
 	table.insert(pa_ing[4], {"pipe", 100})
+end
+if data.raw.item["advanced-processing-unit"] then
+	table.insert(pa_ing[2], {"advanced-processing-unit", 100})
+	table.insert(pa_ing[3], {"advanced-processing-unit", 200})
+	table.insert(pa_ing[4], {"advanced-processing-unit", 400})
+else
+	table.insert(pa_ing[2], {"processing-unit", 200})
+	table.insert(pa_ing[3], {"processing-unit", 300})
+	table.insert(pa_ing[4], {"processing-unit", 400})
 end
 
 for i=1,4 do

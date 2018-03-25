@@ -115,7 +115,7 @@ if data.raw.technology["facility-1"] then
 else
 	table.insert(data.raw.technology["spectral-analysis-1"].effects,{
        type = "unlock-recipe",
-        recipe = "facility-1"
+        recipe = "facility-mk1"
       })
 end
 for k,v in pairs(data.raw.recipe) do
@@ -270,11 +270,11 @@ if data.raw.technology["facility-1"] then
 else
 	table.insert(data.raw.technology["standard-model-1"].effects,{
         type = "unlock-recipe",
-        recipe = "facility-2"
+        recipe = "facility-mk2"
       })
 	table.insert(data.raw.technology["standard-model-2"].effects,{
         type = "unlock-recipe",
-        recipe = "facility-3"
+        recipe = "facility-mk3"
       })
 	table.insert(data.raw.technology["standard-model-1"].effects,{
         type = "unlock-recipe",
